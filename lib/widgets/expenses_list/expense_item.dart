@@ -12,7 +12,7 @@ class ExpenseItem extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(
           horizontal: 20,
-          vertical: 10,
+          vertical: 16,
         ),
         child: ListTile(
           leading: CircleAvatar(
@@ -21,16 +21,16 @@ class ExpenseItem extends StatelessWidget {
             ),
           ),
           title: Row(children: [
-            Text(expense.title),
+            Text(expense.title, style: Theme.of(context).textTheme.titleMedium,),
             const Spacer(),
-            Text(
-              expense.category.toString().split('.').last,
-              style: const TextStyle(
-                color: Colors.grey,
-              ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Icon(expense.icon),
+              ],
             ),
           ]),
-          subtitle: Text(expense.date.toString()),
+          subtitle: Text(expense.getFormattedDate),
         ),
       ),
     );
